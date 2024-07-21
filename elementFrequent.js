@@ -1,18 +1,19 @@
-let a = [1,2,2,2,3,4,5,,5,6,3,5,7];
-let b = 3;
+let arr = ['a', 'b', 'c', 'c', 'c', 'd'];
 
-class Solution {
-    elementFrequent(list, k) {
-        let freq = {};
-        //get frequency
-        for (const elem of list) {
-            freq[elem] = (freq[elem] || 1) + 1;
+class Solucion {
+    // Método que verifica si una lista contiene duplicados
+    contieneDuplicados(lista) {
+        let mapa = {}; // Crear un objeto vacío para almacenar los elementos vistos
+        for (const elemento of lista) { // Iterar sobre cada elemento de la lista
+            if (!mapa[elemento]) { // Si el elemento no está en el mapa
+                mapa[elemento] = true; // Añadir el elemento al mapa con valor true
+            } else { // Si el elemento ya está en el mapa
+                return true; // Retornar true, indicando que se encontró un duplicado
+            }
         }
-
-        //frequency -> ordered list
-        //list k
-       return  Object.keys(freq).sort((a,b) => freq[b] - freq[a]).slice(0, k);
+        return false; // Si no se encontraron duplicados, retornar false
     }
 }
 
-console.log(new Solution().elementFrequent(a,b));
+// Crear una instancia de la clase Solucion y llamar al método contieneDuplicados con el arreglo arr
+console.log(new Solucion().contieneDuplicados(arr));
