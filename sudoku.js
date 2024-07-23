@@ -78,15 +78,17 @@ let a = [
             for (let x = 0; x < 9; x++) {
                 const block = `${Math.floor(y/3)}-${Math.floor(x/3)}`;
                 const cell = matrix[y][x];
-                if (!map[block]) {
-                    map[block] = {};
-                }
+                const row = matrix[y];
+                const column = matrix[x];
+
                 if (cell === ".") continue;
-                if (!map[block][cell]) {
-                    map[block][cell] = true;
-                } else {
-                    return false;
-                }
+                if (map[`${cell} on row ${row}`]
+                    || map[`${cell} on column ${column}`]
+                    || map[`${block} on column ${block}`]
+                ) return false;
+                map[`${cell} on row ${row}`] = true;
+                map[`${cell} on column ${column}`] = true;
+                map[`${block} on column ${block}`] = true;
             }    
         }
         return true;
