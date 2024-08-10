@@ -6,7 +6,7 @@ class Solucion {
 		let map = {};
 		let nuevaLista = [];
 		for (let item of array) {
-			if (!map.hasOwnProperty[item]) {
+			if (!map.hasOwnProperty(item)) {
 				nuevaLista.push(item);
 				map[item] = true;
 			}
